@@ -1,21 +1,25 @@
 import { useState } from 'react';
 
 export default function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  // const [username, setUsername] = useState('');
+  const [formInputs, setFormInputs] = useState({
+    username: '',
+    password: '',
+  });
+  // const [password, setPassword] = useState('');
   function Login1() {
-    console.log(username, password);
+    console.log(formInputs);
   }
   return (
     <>
-      <section className="">
-        <div className="container pt-10">
+      <section>
+        <div className="container flex h-[100vh] items-center pt-10">
           <form className=" bg-slate-400 p-8 w-[40%] m-auto rounded-2xl " onSubmit={(e) => e.preventDefault()}>
             <label className="block font-semibold text-blue-800 my-1" htmlFor="username">
               User Name <span className=" text-red-600">*</span>
             </label>
             <input
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setFormInputs({ ...formInputs, username: e.target.value })}
               className="outline-none border-2 border-solid border-blue-500 rounded-md w-full py-1 placeholder:p-1"
               placeholder="Enter Your Username"
               type="text"
@@ -27,7 +31,7 @@ export default function Login() {
               Password <span className=" text-red-600">*</span>
             </label>
             <input
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setFormInputs({ ...formInputs, password: e.target.value })}
               className="outline-none border-2 border-solid border-blue-500 rounded-md w-full py-1 placeholder:p-1 "
               placeholder="Enter Your Password"
               type="password"
